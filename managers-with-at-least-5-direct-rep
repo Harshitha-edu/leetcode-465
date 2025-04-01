@@ -1,0 +1,10 @@
+# Write your MySQL query statement below
+select E1.name
+from employee E1
+join(
+    select managerId,count(*) as directreports
+    from employee
+    group by managerId
+    having count(*)>=5
+
+)E2 ON E1.id=E2.managerId
